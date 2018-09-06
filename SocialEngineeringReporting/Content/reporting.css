@@ -1,0 +1,25 @@
+﻿.col-xs-2{
+    display:flex;
+    justify-content:center;
+    
+}
+
+h6{
+    font-family:'微軟正黑體';
+    font-size:16px;
+}
+.cbtn{
+    display:flex;
+    padding-left:-50px;
+}
+
+.scrolltable {
+    
+    height: 95vh;
+    display: inline-block;
+    overflow: scroll;
+    
+
+}
+
+

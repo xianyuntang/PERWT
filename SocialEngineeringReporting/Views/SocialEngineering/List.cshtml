@@ -1,0 +1,82 @@
+﻿@using System.Web.WebSockets
+@model SocialEngineeringReporting.Models.UpdateReportingModels
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>釣魚郵件通報系統</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/List.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</head>
+<body>
+    <h1>CDC</h1>
+    <div id="onTopDiv">
+        釣魚郵件近期通報狀態
+    </div>
+    @using (Html.BeginForm("List", "SocialEngineering",  FormMethod.Post, new { name = "upform" }))
+    {
+        <div class="container">
+
+
+            <table class="table table-hover" id="table">
+                <thead>
+                    <tr>
+                        <th style="font-size: 25px">信件標題</th>
+                        <th style="font-size: 25px; width: 20%;">通報時間</th>
+                        <th style="font-size: 25px">通報人</th>
+                        <th style="font-size: 25px">結果</th>
+                        <th style="font-size: 25px">確認時間</th>
+                    </tr>
+                </thead>
+                <tbody id="reportcontainer">
+
+                    @{
+                            
+                        var report = ViewBag.RecentReporting;
+                        for (int j=0; j < ViewBag.RecentReporting.Count;j++)
+
+                            {
+
+                                <tr>
+                                    @Html.HiddenFor(m=>m.Id,new{Value=report[j][0]})
+                                    <td id="subject-@j">@Html.TextBoxFor(model => model.Subject[j], new {@Value = @report[j][1], Class = "TextBox", Readonly = "readonly"})</td>
+                                    <td style="width: 20%;" id="time-@j">@Html.TextBoxFor(model => model.Time[j], new {@Value = @report[j][2], Class = "TextBox2", Readonly = "readonly"})</td>
+                                    <td id="name-@j">@report[j][3]</td>
+                                    <td class="form-inline">
+                                        <select style="width: 70%;"class="form-control" id="sp-@j" name="@Html.NameFor(model => model.Result[j])">
+                                            <option hidden="">@report[j][4]</option>
+                                            <option value="確認為釣魚郵件">確認為釣魚郵件</option>
+                                            <option value="確認非釣魚郵件">確認非釣魚郵件</option>
+                                            <option value="署內信件">署內信件</option>
+                                            <option value="資訊不足無法判斷">資訊不足無法判斷</option>
+                                            <option value="送技術服務單位審核中">送技術服務單位審核中</option>
+
+                                        </select>
+                                        <button type="submit" id="send-@j" value="send-@j" name="button" class="btn btn-primary">送出</button>
+                                    </td>
+
+                                    <td>@report[j][5]</td>
+                                    <td id="account-@j">@Html.HiddenFor(model => model.Account[j], new {@Value = report[j][6]})</td>
+
+                                </tr>
+                            
+                        }
+                    }
+
+                </tbody>
+            </table>
+
+
+
+        </div>
+    }
+
+</body>
+</html>

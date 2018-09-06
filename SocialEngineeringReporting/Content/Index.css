@@ -1,0 +1,167 @@
+﻿* {
+    font-family: '微軟正黑體';
+}
+h1 {
+  color: rgba(0, 128, 0, 0.1);
+  font-size: 280px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+ 
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+#btnreport {
+    margin-top: 0%;
+    position: absolute;
+    left: 47% ;
+    width : 100px;
+    height: 50px;
+}
+    
+#titleMessage {
+    color: green;
+    font-size: 50px;
+    margin-top: 0%;
+}
+
+#onLeftDiv {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 800px;
+    z-index: 10000;
+    padding: 15px;
+    font-size: 16px;
+}
+.container {
+    margin-left: 50%;
+    width: 50%;
+}
+
+.scene {
+    width: 300px;
+    height: 500px;
+    border-radius: 50px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.5);
+    -webkit-box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+}
+
+    .scene h2 {
+        font-size: 26px;
+        margin-bottom: 26px;
+        color: green;
+        font-weight: 900;
+        letter-spacing: 2px;
+    }
+
+
+    .scene .instructions {
+        text-align-last: left;
+        margin-top: 20px;
+        padding: 0;
+        color: red;
+    }
+
+
+    .scene .account, .scene .mail_theme {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        margin-bottom: 18px;
+    }
+
+        .scene .account i, .scene .mail_theme i {
+            margin-right: 5px;
+            color: green;
+        }
+
+        .scene .account label, .scene .mail_theme label {
+            color: green;
+            font-weight: 500;
+            margin-right: 5px;
+        }
+
+        .scene .account input, .scene .mail_theme input {
+            font-size: 24px;
+            -webkit-transition: 0.5s;
+            transition: 0.5s;
+            border: none;
+            outline: none;
+            background-color: transparent;
+            border-bottom: 1px solid green;
+            margin-left: 5px;
+        }
+
+    .scene .send button {
+        font-size: 10px;
+        width: 50%;
+        padding: 10px 20px;
+        margin: 10px 25%;
+        margin-top: 20px;
+        border: 1px solid green;
+        color: green;
+        background-color: transparent;
+        cursor: pointer;
+        font-weight: 600;
+        -webkit-transition: 0.5s;
+        transition: 0.5s;
+    }
+
+        .scene .send button:hover {
+            background-color: green;
+            color: #fcfcfc;
+            -webkit-transition: 0.5s;
+            transition: 0.5s;
+        }
+
+#onTopDiv {
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 60px;
+    z-index: 10000;
+    padding: 15px;
+    font-size: 16px;
+    background-color: white;
+    color: green;
+    font-size: 30px;
+    text-align: center;
+}
+
+#onTopDiv2 {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100px;
+    z-index: 10000;
+    padding: 15px;
+    font-size: 16px;
+    background-color: white;
+    color: green;
+    font-size: 30px;
+    text-align: center;
+}
+
+.container {
+    margin-top: 9%;
+}
+
+

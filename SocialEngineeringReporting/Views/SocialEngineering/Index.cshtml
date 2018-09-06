@@ -1,0 +1,116 @@
+﻿@model SocialEngineeringReporting.Models.ReportingModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>釣魚郵件通報系統</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="~/Content/Index.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script charset="big5" src="~/Scripts/Index.js"></script>
+
+
+</head>
+
+<body>
+    <h1>CDC</h1>
+    <div id="onLeftDiv">
+        <div class="scene">
+
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { name = "serform",onsubmit= "return checkDuplicate()" }))
+            {
+                @Html.ValidationSummary()
+
+                <div class="account">
+                    <i class="fa fa-user-circle"></i>
+                    @Html.LabelFor(model => model.Account)
+                    @Html.TextBoxFor(model => model.Account, new { @Value = Session["Account"].ToString(), style = "width:180px;", @Readonly = "readonly" })
+
+                </div>
+                <div class="mail_theme">
+                    <i class="fa fa-envelope-open"></i>
+                    @Html.LabelFor(model => model.Subject)
+                    @Html.TextBoxFor(model => model.Subject, new { style = "width:180px;" })
+                </div>
+                <div class="instructions">
+                    <p>1.請輸入通報主旨關鍵字</p>
+                    <p>2.切勿直接複製標題以免開啟釣魚郵件信</p>
+                    <p>3.於通報主旨處輸入關鍵字後會自動搜尋相關通報結果</p>
+                    <p>4.如已有通報勿再次通報</p>
+                </div>
+                <div class="send">
+                    <button type="submit" value="SubmitReport">送出</button>
+                </div>
+            }
+
+        </div>
+    </div>
+    <div id="onTopDiv">釣魚郵件通報</div>
+    <div id="onTopDiv2">
+        釣魚郵件近期通報狀態<br />
+        @if ((bool)Session["Auth"] == true)
+        {
+            <button type="button" class="btn btn-success btn-sm" onclick="window.open('List')">管理模式</button>
+            <button type="button" class="btn btn-success btn-sm" onclick="window.open('Reporting')">產生報表</button>
+        }
+    </div>
+    <div class="container">
+
+        <table class="table table-hover">
+
+            <thead id="tabletitle">
+                <tr>
+                    <th style="font-size: 20px">通報主旨</th>
+                    <th style="font-size: 20px">通報時間</th>
+                    <th style="font-size: 20px">結果</th>
+                </tr>
+            </thead>
+
+            <tbody id="reportcontainer">
+
+                @foreach (Tuple<string, DateTime, string> report in ViewBag.RecentReporting)
+                {
+                    if (@report.Item3 == "確認為釣魚郵件")
+                    {
+                        <tr class="danger">
+                            <td>@report.Item1</td>
+                            <td>@report.Item2</td>
+
+                            <td>@report.Item3</td>
+
+
+
+                        </tr>
+                    }
+                    else
+                    {
+                        <tr>
+                            <td>@report.Item1</td>
+                            <td>@report.Item2</td>
+
+                            <td>@report.Item3</td>
+
+
+
+                        </tr>
+                    }
+                }
+
+
+
+
+
+
+
+            </tbody>
+        </table>
+    </div>
+
+
+</body>
+</html>

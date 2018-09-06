@@ -1,0 +1,39 @@
+﻿@model SocialEngineeringReporting.Models.ReportingModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>CDC釣魚郵件回報</title>
+
+
+    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+    <link href="~/Content/style.css" rel="stylesheet"/>
+
+</head>
+<body>
+
+<h1>CDC</h1>
+<div class="scene">
+<h2 class="fa fa-comments-o">釣魚郵件通報</h2>
+<p style="color: green; font-size: 30px; text-align-last: center; margin-top: 100px;">感謝 @Session["Name"] 回報<br/></p>
+        <p>稍後將會將初步檢測結果寄送至您的信箱。如有進一步的需求將會有專人與您聯繫。</p>
+    </div>
+
+
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.0/velocity.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js'></script>
+
+
+
+
+    <script src="~/Scripts/Reporting.js"></script>
+
+</body>
+</html>
